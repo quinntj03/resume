@@ -1,0 +1,76 @@
+h1{
+    color: white;
+    text-align: center;
+    background-color: dimgray;
+    height: 75px;
+    line-height: 75px;
+}
+body{
+    background-color: whitesmoke;
+}
+
+.title{
+    font-weight: bold;
+}
+.loc{
+    text-align: right;
+}
+
+
+nav{
+    background-color: bisque;
+    padding: 20px;
+}
+nav a{
+    color: gray;
+    text-decoration: none;
+    padding: 20px;
+    font-weight: bold;
+}
+nav a:hover{
+    background-color: rgb(225, 172, 108);
+
+}
+
+ol{
+    font-family: 'Times New Roman', Times, serif;
+}
+.loc{
+    font-family: 'Times New Roman', Times, serif;
+}
+.skills{
+    text-align: center;
+    list-style-position: inside;
+    padding: 0;
+    background-color: bisque;
+}
+
+.pics{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+}
+
+.footer{
+    position: fixed;
+    background-color: bisque;
+    color: white;
+    left: 5px;
+    right: 5px;
+    bottom: 0px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+}
+.toppic{
+    background-color: bisque;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 20%;
+    border: 15px;
+    border-color: black;
+    border-width: 15px;
+}

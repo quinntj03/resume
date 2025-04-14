@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini Baseball Game</title>
+  <style>
+    body {
+      font-family: inherit;
+      text-align: center;
+      background-color: #f4f4f9;
+      color: white;
+      padding: 30px;
+      background-image: url('assets/img/background.jpeg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    #scoreboard {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #2980b9;
+    }
+
+    #log {
+      margin-top: 30px;
+      font-size: 1rem;
+      background-color: #3498db;
+      padding: 15px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>⚾ Be a Dodger Baseball Game</h1>
+
+  <div id="scoreboard">
+    <p>Runs: <span id="runs">0</span></p>
+    <p>Strikes: <span id="strikes">0</span></p>
+    <p>Outs: <span id="outs">0</span></p>
+  </div>
+
+  <button class="btn" onclick="swing()">Swing!</button>
+  <button class="btn" onclick="resetGame()">Reset Game</button>
+
+  <div id="log">Let’s play ball with Shohei! Click "Swing!" to see what happens.</div>
+
+  <script>
+    let runs = 0;
+    let strikes = 0;
+    let outs = 0;
+
+    function swing() {
+      const result = Math.random();
+
+      if (result < 0.1) {
+        outs++;
+        logMessage("☠️ Out!");
+      } else if (result < 0.4) {
+        strikes++;
+        logMessage("❌ Strike!");
+      } else {
+        const runScored = Math.floor(Math.random() * 3) + 1;
+        runs += runScored;
+        logMessage(`💥 Hit! You scored ${runScored} run${runScored > 1 ? 's' : ''}!`);
+        strikes = 0; // Reset strikes on a hit
+      }
+
+      if (strikes >= 3) {
+        outs++;
+        strikes = 0;
+        logMessage("😬 Strikeout!");
+      }
+
+      if (outs >= 3) {
+        logMessage("🛑 3 Outs! Inning over. Better luck next time kiddo!");
+        disableGame();
+      }
+
+      updateDisplay();
+    }
+
+    function updateDisplay() {
+      document.getElementById("runs").textContent = runs;
+      document.getElementById("strikes").textContent = strikes;
+      document.getElementById("outs").textContent = outs;
+    }
+
+    function logMessage(message) {
+      document.getElementById("log").textContent = message;
+    }
+
+    function disableGame() {
+      document.querySelector(".btn").disabled = true;
+    }
+
+    function resetGame() {
+      runs = 0;
+      strikes = 0;
+      outs = 0;
+      document.querySelector(".btn").disabled = false;
+      updateDisplay();
+      logMessage("🔄 Game reset! Let’s play again!");
+    }
+  </script>
+</body>
+</html>
